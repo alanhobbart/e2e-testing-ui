@@ -1,0 +1,28 @@
+{
+  "root": "apps/floww-e2e",
+  "sourceRoot": "apps/floww-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/floww-e2e/cypress.json",
+        "devServerTarget": "floww:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "floww:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/floww-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["floww"]
+}

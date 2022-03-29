@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "floww": "apps/floww",
+    "floww-e2e": "apps/floww-e2e"
+  }
+}
