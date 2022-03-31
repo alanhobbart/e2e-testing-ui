@@ -1,14 +1,42 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.css';
-import NxWelcome from './nx-welcome';
-
+import { Header } from '@test/ui';
+import Stats from './stats/stats';
+import TrafficInfo from './traffic-info/traffic-info';
 export function App() {
+  
   return (
     <>
-      <NxWelcome title="floww" />
-      <div />
+    <div className="min-h-full">
+       
+        <Header title="Dashboard" backgroundColor="bg-cyan-600"></Header>
+       
+        <main>
+        <div className="flex flex-wrap overflow-hidden lg:-mx-px justify-center">
+
+          <div className="w-3/4 overflow-hidden lg:my-px pt-10 lg:px-px ml-60">
+          <TrafficInfo data={{
+                statSubtitle:"Traffic",
+                statTitle: "350,897",
+                statArrow: "up",
+                statPercent: "3.48",
+                statPercentColor: "text-emerald-500",
+                statDescripiron: "Since last month",
+                statIconName: "far fa-chart-bar",
+                statIconColor: "bg-green-500",
+              }}/>
+          </div>
+
+          <div className="w-3/4 overflow-hidden">
+            <Stats/>
+          </div>
+        </div>
+          
+        </main>
+      </div>
+      <div>
+      </div>
     </>
   );
+
 }
 
 export default App;
