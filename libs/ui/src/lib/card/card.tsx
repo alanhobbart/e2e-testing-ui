@@ -49,7 +49,7 @@ export function Card({ data }: CardProps) {
               ></i>{" "}
               {data.statPercent}%
             </span>
-            <span className="whitespace-nowrap">{data.statDescripiron} test</span>
+            <span className="whitespace-nowrap">{data.statDescripiron}</span>
           </p>
         </div>
       </div>
