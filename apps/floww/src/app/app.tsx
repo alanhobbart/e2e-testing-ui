@@ -1,7 +1,7 @@
 import { CardProps, Header } from '@test/ui';
 import { useState } from 'react';
 import Stats from './stats/stats';
-import TrafficInfo, { TrafficInfoProps } from './traffic-info/traffic-info';
+import TrafficInfo from './traffic-info/traffic-info';
 export function App() {
   
   let traffic = { data: {

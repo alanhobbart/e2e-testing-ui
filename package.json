@@ -5,7 +5,8 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "test-storybook": "test-storybook --url http://localhost:4400"
   },
   "private": true,
   "dependencies": {
@@ -41,6 +42,7 @@
     "@storybook/jest": "^0.0.10",
     "@storybook/manager-webpack5": "~6.4.12",
     "@storybook/react": "~6.4.12",
+    "@storybook/test-runner": "^0.0.4",
     "@storybook/testing-library": "^0.0.9",
     "@svgr/webpack": "^5.4.0",
     "@testing-library/react": "12.1.4",
