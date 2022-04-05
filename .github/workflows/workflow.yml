@@ -1,9 +1,5 @@
-name: CI
-on:
-  push:
-    branches:
-      - main
-  pull_request:
+name: 'UI Changes'
+on: push
 
 jobs:
   main:
