@@ -7,7 +7,7 @@ export function App() {
     <> 
       <Header title="Dashboard" backgroundColor="bg-purple-800"></Header>
       <Dashboard/>
-      <div>test</div>
+      <div>change</div>
     </>
   );
 }

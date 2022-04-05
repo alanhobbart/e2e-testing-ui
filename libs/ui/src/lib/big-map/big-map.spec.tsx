@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import Testagain from './testagain';
+import BigMap from './big-map';
 
-describe('Testagain', () => {
+describe('BigMap', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Testagain />);
+    const { baseElement } = render(<BigMap />);
     expect(baseElement).toBeTruthy();
   });
 });

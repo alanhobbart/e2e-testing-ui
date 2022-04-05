@@ -5,6 +5,7 @@
     "admin-e2e": "apps/admin-e2e",
     "floww": "apps/floww",
     "floww-e2e": "apps/floww-e2e",
+
     "ui": "libs/ui",
     "ui-e2e": "apps/ui-e2e"
   }

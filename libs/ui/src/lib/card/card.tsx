@@ -5,7 +5,7 @@ export interface CardProps {
     statArrow: string,
     statPercent: string,
     statPercentColor: string,
-    statDescripiron: string,
+    statDescription: string,
     statIconName: string,
     statIconColor: string
   }
@@ -14,14 +14,14 @@ export interface CardProps {
 export function Card({ data }: CardProps) {
   return (
     <>
-      <div className="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
+      <div className="cardHolder relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
         <div className="flex-auto p-4">
           <div className="flex flex-wrap">
             <div className="relative w-full pr-4 max-w-full flex-grow flex-1">
               <h5 className="text-blueGray-400 uppercase font-bold text-xs">
                 {data.statSubtitle}
               </h5>
-              <span className="font-semibold text-xl text-blueGray-700">
+              <span className="trafficTotal font-semibold text-xl text-blueGray-700">
                 {data.statTitle}
               </span>
             </div>
@@ -49,7 +49,7 @@ export function Card({ data }: CardProps) {
               ></i>{" "}
               {data.statPercent}%
             </span>
-            <span className="whitespace-nowrap">{data.statDescripiron}</span>
+            <span className="whitespace-nowrap">{data.statDescription}</span>
           </p>
         </div>
       </div>

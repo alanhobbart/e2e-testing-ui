@@ -1,7 +1,21 @@
-import { Header } from '@test/ui';
+import { CardProps, Header } from '@test/ui';
+import { useState } from 'react';
 import Stats from './stats/stats';
-import TrafficInfo from './traffic-info/traffic-info';
+import TrafficInfo, { TrafficInfoProps } from './traffic-info/traffic-info';
 export function App() {
+  
+  let traffic = { data: {
+    statSubtitle:"Traffic",
+    statTitle: "350,897",
+    statArrow: "up",
+    statPercent: "3.48",
+    statPercentColor: "text-emerald-500",
+    statDescription: "Since last month",
+    statIconName: "far fa-chart-bar",
+    statIconColor: "bg-green-500",
+  }};
+
+  const [trafficData, setTrafficData] = useState<CardProps>(traffic);
   
   return (
     <>
@@ -11,18 +25,17 @@ export function App() {
        
         <main>
         <div className="flex flex-wrap overflow-hidden lg:-mx-px justify-center">
-
+          
           <div className="w-3/4 overflow-hidden lg:my-px pt-10 lg:px-px ml-60">
-          <TrafficInfo data={{
-                statSubtitle:"Traffic",
-                statTitle: "350,897",
-                statArrow: "up",
-                statPercent: "3.48",
-                statPercentColor: "text-emerald-500",
-                statDescripiron: "Since last month",
-                statIconName: "far fa-chart-bar",
-                statIconColor: "bg-green-500",
-              }}/>
+          <TrafficInfo info={trafficData} onReload={() => {
+            setTrafficData({
+              ...traffic,
+              data: {
+                ...traffic.data,
+                statTitle: '100'
+              }
+            });
+          }}/>
           </div>
 
           <div className="w-3/4 overflow-hidden">

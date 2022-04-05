@@ -1,8 +1,8 @@
 
 import Map from 'react-map-gl';
  
-export interface MapProps {}
-export function MapView(props: MapProps) {
+
+export function MapView() {
 
   return (
     <Map
