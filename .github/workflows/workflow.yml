@@ -39,8 +39,8 @@ jobs:
           key: ${{ runner.os }}-yarn-v1-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-v1
+      - name: Run tests
       - uses: mansagroup/nrwl-nx-action@v2
-      - name: Run test
       with:
         targets: test
         projects: floww
