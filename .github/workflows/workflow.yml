@@ -5,6 +5,7 @@ jobs:
   # Install and cache npm dependencies
   install-cache:
     runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' }}
     steps:
       - name: Checkout Commit
         uses: actions/checkout@v2
