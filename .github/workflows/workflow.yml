@@ -64,14 +64,14 @@ jobs:
         with:
           node-version: '16'
       - run: yarn
-      - run: yarn nx affected --target=build-storybook --parallel=3
+      - run: yarn nx affected --target=build-storybook
       - name: Publish to Chromatic
         uses: chromaui/action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           # Grab this from the Chromatic manage page
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          storybookBuildDir: dist/storybook/flowww
+          storybookBuildDir: dist/storybook/floww
 
   pr:
     runs-on: ubuntu-latest
