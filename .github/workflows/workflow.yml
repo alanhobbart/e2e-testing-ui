@@ -36,8 +36,9 @@ jobs:
         with:
           node-version: '16'
       - run: yarn
-      - run: npx nx affected --target=build --parallel=3
-      - run: npx nx affected --target=test --parallel=2
+      - run: yarn nx affected --target=build --parallel=4
+      - run: yarn nx affected --target=build-storybook --parallel=3
+      - run: yarn nx affected --target=test --parallel=2
   pr:
     runs-on: ubuntu-latest
     needs: install-cache
@@ -53,5 +54,7 @@ jobs:
         with:
           node-version: '16'
       - run: yarn
-      - run: npx nx affected --target=build --parallel=3
-      - run: npx nx affected --target=test --parallel=2
+      - run: yarn nx affected --target=build --parallel=4
+      - run: yarn nx affected --target=build-storybook --parallel=3
+      - run: yarn nx affected --target=test --parallel=2
+      
