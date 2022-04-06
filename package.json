@@ -6,7 +6,8 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "test-storybook": "test-storybook --url http://localhost:4400"
+    "test-storybook": "test-storybook --url http://localhost:4400",
+    "chromatic": "npx chromatic --project-token=92b629bae9c1"
   },
   "private": true,
   "dependencies": {
