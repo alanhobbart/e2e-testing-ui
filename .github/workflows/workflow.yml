@@ -1,9 +1,5 @@
-name: 'Release Workflow'
-on:
-  push:
-    branches:
-      - main
-  pull_request:
+name: 'Release workflow'
+on: push
 
 jobs:
   main:
