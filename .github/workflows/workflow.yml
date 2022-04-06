@@ -37,7 +37,6 @@ jobs:
           node-version: '16'
       - run: yarn
       - run: yarn nx affected --target=build --parallel=4
-      - run: yarn nx affected --target=build-storybook --parallel=3
       - run: yarn nx affected --target=test --parallel=2
 
   # Run visual and composition tests with Chromatic
@@ -59,6 +58,13 @@ jobs:
           key: ${{ runner.os }}-yarn-v1-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-v1
+      - name: Build affected storybook
+        uses: nrwl/nx-set-shas@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '16'
+      - run: yarn
+      - run: yarn nx affected --target=build-storybook --parallel=3
       - name: Publish to Chromatic
         uses: chromaui/action@v1
         with:
@@ -83,6 +89,5 @@ jobs:
           node-version: '16'
       - run: yarn
       - run: yarn nx affected --target=build --parallel=4
-      - run: yarn nx affected --target=build-storybook --parallel=3
       - run: yarn nx affected --target=test --parallel=2
       
