@@ -71,7 +71,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           # Grab this from the Chromatic manage page
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          storybookBuildDir: dist/storybook
+          storybookBuildDir: dist/storybook/floww
 
   pr:
     runs-on: ubuntu-latest
