@@ -39,9 +39,7 @@ jobs:
       - run: yarn nx affected --target=build --parallel=4
       - run: yarn nx affected --target=test --parallel=2
 
-  # Build affected storybooks
-
-
+  
   # Run visual and composition tests with Chromatic
   visual-and-composition:
     runs-on: ubuntu-latest
@@ -68,12 +66,7 @@ jobs:
           node-version: '16'
       - run: yarn
       - run: yarn nx affected --target=build-storybook
-      - name: "Check storybook updated"
-        uses: andstor/file-existence-action@v1
-        with:
-          files: "dist/storybook/floww"
       - name: Publish to Chromatic
-        if: steps.check_files.outputs.files_exists == 'true'
         uses: chromaui/action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
