@@ -1,5 +1,9 @@
-name: 'UI Changes'
-on: push
+name: 'Release Workflow'
+on:
+  push:
+    branches:
+      - main
+  pull_request:
 
 jobs:
   main:
@@ -31,6 +35,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '16'
-      - run: npm install
+      - run: yarn
       - run: npx nx affected --target=build --parallel=3
       - run: npx nx affected --target=test --parallel=2
