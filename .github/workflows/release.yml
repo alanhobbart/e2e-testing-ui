@@ -37,5 +37,5 @@ jobs:
         with:
           node-version: '16'
       - run: yarn
-      - run: yarn nx affected --target=build --parallel=2
+      - run: yarn nx affected --target=build --parallel=3
       - run: yarn nx affected --target=test --parallel=2

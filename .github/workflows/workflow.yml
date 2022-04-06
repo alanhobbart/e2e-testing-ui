@@ -1,25 +1,64 @@
-name: 'UI Changes'
+name: 'Release workflow'
 on: push
 
 jobs:
-  main:
+  # Install and cache npm dependencies
+  install-cache:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name != 'pull_request' }}
+    steps:
+      - name: Checkout Commit
+        uses: actions/checkout@v2
+      - name: Cache yarn dependencies and cypress
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: |
+            ~/.cache/Cypress
+            node_modules
+          key: ${{ runner.os }}-yarn-v1-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-v1
+      - name: Install dependencies if cache invalid
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn
+  
+  # Run visual and composition tests with Chromatic
+  visual-ui-chromatic-tests:
+    runs-on: ubuntu-latest
+    needs: install-cache
+    if: ${{ github.event_name == 'pull_request' }}
     steps:
       - uses: actions/checkout@v2
-        name: Checkout [main]
         with:
-          fetch-depth: 0
-      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+          fetch-depth: 0 # Required to retrieve git history
+      - name: Restore yarn dependencies
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: |
+            ~/.cache/Cypress
+            node_modules
+          key: ${{ runner.os }}-yarn-v1-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-v1
+      - name: Build affected storybook
         uses: nrwl/nx-set-shas@v2
       - uses: actions/setup-node@v1
         with:
           node-version: '16'
       - run: yarn
-      - run: npx nx affected --target=build --parallel=3
-      - run: npx nx affected --target=test --parallel=2
+      - run: yarn nx affected --target=build-storybook
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # Grab this from the Chromatic manage page
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          storybookBuildDir: dist/storybook/floww
+
   pr:
     runs-on: ubuntu-latest
+    needs: install-cache
     if: ${{ github.event_name == 'pull_request' }}
     steps:
       - uses: actions/checkout@v2
@@ -31,6 +70,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '16'
-      - run: npm install
-      - run: npx nx affected --target=build --parallel=3
-      - run: npx nx affected --target=test --parallel=2
+      - run: yarn
+      - run: yarn nx affected --target=build --parallel=4
+      - run: yarn nx affected --target=test --parallel=2
+      
