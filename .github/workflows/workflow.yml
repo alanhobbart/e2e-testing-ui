@@ -61,7 +61,8 @@ jobs:
           # Grab this from the Chromatic manage page
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           storybookBuildDir: dist/storybook/floww
-
+      - name: Run storybook tests
+        run: 'REFERENCE_URL=${{ steps.chromatic-publish.outputs.storybookUrl}} yarn test-storybook:ci'
   pr:
     runs-on: ubuntu-latest
     needs: install-cache

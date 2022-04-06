@@ -65,6 +65,16 @@
         "passWithNoTests": true
       }
     },
+    "test-storybook": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+        {
+          "command": "yarn test-storybook --url http://localhost:4400 --verbose"
+        }
+        ]
+      }
+    },
     "storybook": {
       "executor": "@nrwl/storybook:storybook",
       "options": {
