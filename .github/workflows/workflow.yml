@@ -65,7 +65,7 @@ jobs:
       - name: Install playwright
         run:  'npx playwright install' 
       - name: Run storybook tests
-        run: 'yarn test-storybook --url ${{ steps.publish_to_chromatic.outputs.storybookUrl}}'
+        run: 'yarn test-storybook --url ${{ steps.publish_to_chromatic.outputs.storybookUrl}} --verbose'
   pr:
     runs-on: ubuntu-latest
     needs: install-cache
