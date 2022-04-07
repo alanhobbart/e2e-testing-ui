@@ -20,7 +20,6 @@ export function App() {
   return (
     <>
     <div className="min-h-full">
-        <div>test change</div>
         <Header title="Dashboard" backgroundColor="bg-cyan-600"></Header>
        
         <main>
