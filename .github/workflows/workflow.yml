@@ -62,7 +62,7 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           storybookBuildDir: dist/storybook/floww
       - name: Run storybook tests
-        run: 'TARGET_URL=${{ steps.chromatic-publish.outputs.storybookUrl}} yarn test-storybook --url ${{ steps.chromatic-publish.outputs.storybookUrl}}'
+        run: 'yarn test-storybook --url ${{ steps.publish-to-chromatic.outputs.storybookUrl}}'
   pr:
     runs-on: ubuntu-latest
     needs: install-cache
