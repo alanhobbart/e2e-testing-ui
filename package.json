@@ -6,7 +6,6 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "test-storybook": "test-storybook",
     "chromatic": "npx chromatic --project-token=92b629bae9c1",
     "test-storybook:ci": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"yarn build-storybook --quiet && npx http-server storybook-static --port 6006 --silent\" \"wait-on tcp:6006 && yarn test-storybook\""
   },
